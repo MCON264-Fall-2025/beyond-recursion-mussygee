@@ -13,7 +13,22 @@ public class RecursiveInsertLast implements InsertLastStrategy {
         // - Base (tail reached): append new node and return head.
         // - Recurse: head.next = insertLast(head.next, value); return head;
         // - OPTIONAL: track recursion depth (e.g., param or field).
-        return head; // placeholder
+
+        // Base case: empty list
+        if (head == null) {
+            return new ListNode(value);
+        }
+
+        // Base case: tail reached
+        if (head.next == null) {
+            head.next = new ListNode(value);
+            return head;
+        }
+
+        // Recursive step:
+        observedDepth++;
+        head.next = insertLast(head.next, value);
+        return head;
     }
 
     // Simple memory helpers for the demo
