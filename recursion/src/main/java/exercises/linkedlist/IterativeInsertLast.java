@@ -8,6 +8,20 @@ public class IterativeInsertLast implements InsertLastStrategy {
         // Hints:
         // - If head == null, return new node.
         // - Otherwise, walk to tail and append; return original head.
+
+        // Empty list case
+        if (head == null) {
+            return new ListNode(value);
+        }
+
+        // Walk to the tail node
+        ListNode current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+
+        // Append new node at the end
+        current.next = new ListNode(value);
         return head; // placeholder
     }
 
